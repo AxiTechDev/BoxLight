@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <android.support.v4.view.ViewPager
+
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"/>
+    <!--tools:context=".MyActivity"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="@dimen/prom_logo"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:paddingTop="12dp"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:background="#fff"-->
+        <!--android:id="@+id/linearLayoutTop">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:id="@+id/imageView3"-->
+            <!--android:src="@drawable/prom_logo" />-->
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="12dp"
+        android:gravity="center_horizontal"
+        android:background="#FF6600"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/logo" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginRight="20dp"
+            android:text="GET MORE INFO"
+            android:id="@+id/share_button"
+            android:onClick="emailShare"
+            android:textColor="#ff6600"
+            android:background="#fff"/>
+
+        <!--<Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:layout_marginLeft="20dp"
+            android:paddingRight="30dp"
+            android:layout_marginRight="20dp"
+            android:text="Take A Class"
+            android:id="@+id/record"
+            android:onClick="seeRecord"/>
+            &lt;!&ndash;android:layout_alignParentBottom="true"&ndash;&gt;-->
+
+        <!--<Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Take A Chance"
+            android:id="@+id/win"
+            android:onClick="contest"/>-->
+
+    </LinearLayout>
+
+</RelativeLayout>
