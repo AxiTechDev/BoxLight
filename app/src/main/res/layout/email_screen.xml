@@ -17,14 +17,14 @@
             android:id="@+id/imageView2"
             android:src="@drawable/logo" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:id="@+id/button"
-            android:background="#ff6600"
-            android:onClick="dbHandler"/>
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="1"-->
+            <!--android:id="@+id/button"-->
+            <!--android:background="#ff6600"-->
+            <!--android:onClick="dbHandler"/>-->
 
     </LinearLayout>
 
@@ -32,12 +32,12 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:inputType="textPersonName"
         android:hint="@string/name"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginBottom="50dp" />
+        android:layout_above="@+id/email_address"
+        android:layout_marginBottom="@dimen/left_mar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/email_address"
@@ -45,9 +45,10 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:hint="@string/email"
-        android:layout_below="@+id/name"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/news_letter"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,6 +57,7 @@
         android:text="Which grade do you primarily teach?"
         android:id="@+id/textView"
         android:layout_marginTop="50dp"
+        android:layout_marginLeft="@dimen/left_mar"
         android:layout_below="@+id/logo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -196,6 +198,7 @@
         android:text="How useful would this product be for your classroom?"
         android:id="@+id/textView2"
         android:layout_marginTop="40dp"
+        android:layout_marginLeft="@dimen/left_mar"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true" />
 
@@ -205,10 +208,10 @@
         android:layout_height="wrap_content"
         android:text="@string/submit_it"
         android:id="@+id/submit_button"
-        android:layout_below="@+id/email_address"
+        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/ratingBar"
         android:layout_alignEnd="@+id/ratingBar"
-        android:layout_marginTop="40dp" /> <!--android:onClick="submit_it"/>-->
+        android:layout_marginBottom="59dp" /> <!--android:onClick="submit_it"/>-->
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -218,5 +221,98 @@
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add me to AXI News Monthly!"
+        android:id="@+id/news_letter"
+        android:layout_above="@+id/submit_button"
+        android:layout_marginLeft="@dimen/left_mar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Request:"
+        android:id="@+id/request"
+        android:layout_below="@+id/ratingBar"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="@dimen/left_mar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        android:id="@+id/info"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@+id/request"
+        android:layout_alignTop="@+id/request" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quote"
+        android:id="@+id/quote"
+        android:layout_marginLeft="50dp"
+        android:layout_alignTop="@+id/info"
+        android:layout_toRightOf="@+id/news_letter" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo"
+        android:id="@+id/demo"
+        android:layout_marginLeft="70dp"
+        android:layout_toRightOf="@+id/quote"
+        android:layout_alignTop="@+id/quote" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service Call"
+        android:id="@+id/service"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/info"
+        android:layout_toEndOf="@+id/info" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Professional Development"
+        android:id="@+id/pro_dev"
+        android:layout_toEndOf="@+id/quote"
+        android:layout_alignTop="@+id/service"
+        android:layout_toRightOf="@+id/quote" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:inputType="text"
+        android:ems="10"
+        android:hint="Notes"
+        android:id="@+id/note"
+        android:layout_below="@+id/service"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/info"
+        android:layout_alignRight="@+id/pro_dev"
+        android:layout_alignEnd="@+id/pro_dev" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Add a note:"
+        android:id="@+id/textView4"
+        android:layout_marginLeft="@dimen/left_mar"
+        android:layout_alignTop="@+id/note"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
