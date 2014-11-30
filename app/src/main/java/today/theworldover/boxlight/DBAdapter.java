@@ -34,22 +34,36 @@ public class DBAdapter {
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_GRADE = "grade";
+    public static final String KEY_LETTER = "letter";
+    public static final String KEY_INFO = "info";
+    public static final String KEY_QUOTE = "quote";
+    public static final String KEY_DEMO = "demo";
+    public static final String KEY_SERVICE = "service";
+    public static final String KEY_PRODEV = "professionaldev";
+    public static final String KEY_NOTE = "note";
     public static final String KEY_RATING = "rating";
 
     // TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
     public static final int COL_NAME = 1;
     public static final int COL_EMAIL = 2;
     public static final int COL_GRADE = 3;
-    public static final int COL_RATING = 4;
+    public static final int COL_LETTER = 4;
+    public static final int COL_INFO = 5;
+    public static final int COL_QUOTE = 6;
+    public static final int COL_DEMO = 7;
+    public static final int COL_SERVICE = 8;
+    public static final int COL_PRODEV = 9;
+    public static final int COL_NOTE = 10;
+    public static final int COL_RATING = 11;
 
 
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_NAME, KEY_EMAIL, KEY_GRADE, KEY_RATING};
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_NAME, KEY_EMAIL, KEY_GRADE, KEY_LETTER, KEY_INFO, KEY_QUOTE, KEY_DEMO, KEY_SERVICE, KEY_PRODEV, KEY_NOTE, KEY_RATING};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "BoxLight Tablet";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 7;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
@@ -68,6 +82,13 @@ public class DBAdapter {
                     + KEY_NAME + " text not null, "
                     + KEY_EMAIL + " string not null, "
                     + KEY_GRADE + " string not null, "
+                    + KEY_LETTER + " integer not null, "
+                    + KEY_INFO + " integer not null, "
+                    + KEY_QUOTE + " integer not null, "
+                    + KEY_DEMO + " integer not null, "
+                    + KEY_SERVICE + " integer not null, "
+                    + KEY_PRODEV + " integer not null, "
+                    + KEY_NOTE + " string not null, "
                     + KEY_RATING + " integer not null"
 
                     // Rest  of creation:
@@ -100,7 +121,7 @@ public class DBAdapter {
     }
 
     // Add a new set of values to the database.
-    public long insertRow(String name, String email, String grade, float rating) {
+    public long insertRow(String name, String email, String grade, int letter, int info, int quote, int demo, int service, int proDev, String note, float rating) {
 		/*
 		 * CHANGE 3:
 		 */
@@ -111,6 +132,13 @@ public class DBAdapter {
         initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_EMAIL, email);
         initialValues.put(KEY_GRADE, grade);
+        initialValues.put(KEY_LETTER, letter);
+        initialValues.put(KEY_INFO, info);
+        initialValues.put(KEY_QUOTE, quote);
+        initialValues.put(KEY_DEMO, demo);
+        initialValues.put(KEY_SERVICE, service);
+        initialValues.put(KEY_PRODEV, proDev);
+        initialValues.put(KEY_NOTE, note);
         initialValues.put(KEY_RATING, rating);
 
         // Insert it into the database.
@@ -157,7 +185,7 @@ public class DBAdapter {
     }
 
     // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String name, String email, String grade, float rating) {
+    public boolean updateRow(long rowId, String name, String email, String grade, int letter, int info, int quote, int demo, int service, int proDev, String note, float rating) {
         String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -170,6 +198,13 @@ public class DBAdapter {
         newValues.put(KEY_NAME, name);
         newValues.put(KEY_EMAIL, email);
         newValues.put(KEY_GRADE, grade);
+        newValues.put(KEY_LETTER, letter);
+        newValues.put(KEY_INFO, info);
+        newValues.put(KEY_QUOTE, quote);
+        newValues.put(KEY_DEMO, demo);
+        newValues.put(KEY_SERVICE, service);
+        newValues.put(KEY_PRODEV, proDev);
+        newValues.put(KEY_NOTE, note);
         newValues.put(KEY_RATING, rating);
 
         // Insert it into the database.
