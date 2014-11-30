@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
@@ -29,6 +30,7 @@ public class EmailScreen extends Activity {
     EditText edtTextEmail;
     String grade;
     RatingBar mRate;
+    CheckBox newLetter, info, quote, demo, service, proDev;
     //SeeRecords recSet;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,29 +104,6 @@ public class EmailScreen extends Activity {
                 break;
         }
     }
-
-//    protected void sendEmail() {
-//        String[] recipient = {edtTextEmail.getText().toString() };
-//
-//        File fileLocation = new File (Environment.getExternalStorageDirectory(), "/mnt/external_sd/file.txt");
-//        Uri U = Uri.fromFile(fileLocation);
-//        Intent email = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
-//        email.setType("text/plain");
-//
-//        email.putExtra(Intent.EXTRA_EMAIL, recipient);
-//        email.putExtra(Intent.EXTRA_SUBJECT, "Its that thing you were looking for...");
-//        email.putExtra(Intent.EXTRA_TEXT, "Hey hey, I can't believe it worked!/n/n");
-//        email.putExtra(Intent.EXTRA_STREAM, U);
-//
-//
-//        try {
-//            startActivity(Intent.createChooser(email, "Choose an email client from..."));
-//        } catch (ActivityNotFoundException ex) {
-//            Toast.makeText(EmailScreen.this, "No email client found.", Toast.LENGTH_LONG).show();
-//        }
-//        Toast.makeText(EmailScreen.this, getString(R.string.thank_you), Toast.LENGTH_LONG).show();
-//        Log.i("Finished sending email...", "");
-//    }
 
     @Override
     protected void onDestroy() {
@@ -229,7 +208,7 @@ public class EmailScreen extends Activity {
         
         File dir = new File(root.getAbsolutePath());
         dir.mkdirs();
-        File file = new File(dir, "db_printout.txt");
+        File file = new File(dir, "boxlight_lacue.txt");
 
         try {
             FileOutputStream f = new FileOutputStream(file);
@@ -243,4 +222,26 @@ public class EmailScreen extends Activity {
         }
     }
 
+//    protected void sendEmail() {
+//        String[] recipient = {edtTextEmail.getText().toString() };
+//
+//        File fileLocation = new File (Environment.getExternalStorageDirectory(), "/mnt/external_sd/file.txt");
+//        Uri U = Uri.fromFile(fileLocation);
+//        Intent email = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
+//        email.setType("text/plain");
+//
+//        email.putExtra(Intent.EXTRA_EMAIL, recipient);
+//        email.putExtra(Intent.EXTRA_SUBJECT, "Its that thing you were looking for...");
+//        email.putExtra(Intent.EXTRA_TEXT, "Hey hey, I can't believe it worked!/n/n");
+//        email.putExtra(Intent.EXTRA_STREAM, U);
+//
+//
+//        try {
+//            startActivity(Intent.createChooser(email, "Choose an email client from..."));
+//        } catch (ActivityNotFoundException ex) {
+//            Toast.makeText(EmailScreen.this, "No email client found.", Toast.LENGTH_LONG).show();
+//        }
+//        Toast.makeText(EmailScreen.this, getString(R.string.thank_you), Toast.LENGTH_LONG).show();
+//        Log.i("Finished sending email...", "");
+//    }
 }

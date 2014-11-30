@@ -276,9 +276,9 @@
         android:layout_height="wrap_content"
         android:text="Service Call"
         android:id="@+id/service"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/info"
-        android:layout_toEndOf="@+id/info" />
+        android:layout_toEndOf="@+id/info"
+        android:layout_below="@+id/quote"
+        android:layout_toRightOf="@+id/info" />
 
     <CheckBox
         android:layout_width="wrap_content"
