@@ -28,9 +28,10 @@ public class EmailScreen extends Activity {
     DBAdapter myDb;
     EditText edtTextName;
     EditText edtTextEmail;
+    EditText edtTextNote;
     String grade;
     RatingBar mRate;
-    CheckBox newLetter, info, quote, demo, service, proDev;
+    CheckBox newsLetter, info, quote, demo, service, proDev;
     //SeeRecords recSet;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,14 @@ public class EmailScreen extends Activity {
 
         edtTextName = (EditText) findViewById(R.id.name);
         edtTextEmail = (EditText) findViewById(R.id.email_address);
+        edtTextNote = (EditText) findViewById(R.id.note);
         mRate = (RatingBar) findViewById(R.id.ratingBar);
+        newsLetter = (CheckBox) findViewById(R.id.news_letter);
+        info = (CheckBox) findViewById(R.id.info);
+        quote = (CheckBox) findViewById(R.id.quote);
+        demo = (CheckBox) findViewById(R.id.demo);
+        service = (CheckBox) findViewById(R.id.service);
+        proDev = (CheckBox) findViewById(R.id.pro_dev);
 
         //String name = edtTextName.getText().toString();
         //String email = edtTextEmail.getText().toString();
@@ -129,10 +137,34 @@ public class EmailScreen extends Activity {
         String name = edtTextName.getEditableText().toString();
         String email = edtTextEmail.getEditableText().toString();
         String thisGrade = grade;
-
+        int letter = 0;
+        if (newsLetter.isChecked()) {
+            letter = 1;
+        }
+        int wantInfo = 0;
+        if (info.isChecked()) {
+            wantInfo = 1;
+        }
+        int wantQuote = 0;
+        if (quote.isChecked()) {
+            wantQuote = 1;
+        }
+        int wantDemo = 0;
+        if (demo.isChecked()) {
+            wantDemo = 1;
+        }
+        int wantService = 0;
+        if (service.isChecked()) {
+            wantService = 1;
+        }
+        int wantProDev = 0;
+        if (proDev.isChecked()) {
+            wantProDev = 1;
+        }
+        String note = edtTextNote.getEditableText().toString();
         float rate = mRate.getRating();
 
-        long newId = myDb.insertRow(name, email, thisGrade, rate);
+        long newId = myDb.insertRow(name, email, thisGrade, letter, wantInfo, wantQuote, wantDemo, wantService, wantProDev, note, rate);
 
         String thisEntry = "Record " + newId + " Name: " + name + " Email: " + email + " Grade: " + grade + " Interest rating: " + rate;
         Log.v("Hey billyyy! ", "" + thisEntry);
@@ -162,6 +194,13 @@ public class EmailScreen extends Activity {
                 String name = cursor.getString(DBAdapter.COL_NAME);
                 String email = cursor.getString(DBAdapter.COL_EMAIL);
                 String grade = cursor.getString(DBAdapter.COL_GRADE);
+                boolean letter = cursor.getInt(DBAdapter.COL_LETTER)>0;
+                boolean info = cursor.getInt(DBAdapter.COL_INFO)>0;
+                boolean quote = cursor.getInt(DBAdapter.COL_QUOTE)>0;
+                boolean demo = cursor.getInt(DBAdapter.COL_DEMO)>0;
+                boolean service = cursor.getInt(DBAdapter.COL_SERVICE)>0;
+                boolean profDev = cursor.getInt(DBAdapter.COL_PRODEV)>0;
+                String note = cursor.getString(DBAdapter.COL_NOTE);
                 int rating = cursor.getInt(DBAdapter.COL_RATING);
 
                 // Append data to the message:
@@ -169,7 +208,14 @@ public class EmailScreen extends Activity {
                         +", name=" + name
                         +", email=" + email
                         +", grade=" + grade
+                        +", get newsletter=" + letter
+                        +", get info=" + info
+                        +", get quote=" + quote
+                        +", get demo=" + demo
+                        +", get service call=" + service
+                        +", get professional development=" + profDev
                         +", rating=" + rating
+                        +"\nnotes= " + note
                         +"\n";
             } while(cursor.moveToNext());
             //Toast.makeText(EmailScreen.this, message, Toast.LENGTH_LONG).show();
@@ -213,7 +259,8 @@ public class EmailScreen extends Activity {
         try {
             FileOutputStream f = new FileOutputStream(file);
             PrintWriter pw = new PrintWriter(f);
-            pw.println(R.string.app_name);
+            pw.println("Boxlight");
+            //pw.println("ID\tName\tEmail\tGrade\tGet Newsletter\tGet Info\tGet Quote\tGet Demo\tGet Service Call\tGet Prof. Dev\tInterest Rating");
             pw.println(message);
             pw.flush();
             pw.close();
