@@ -14,6 +14,6 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="submit_it">SUBMIT</string>
-    <string name="thank_you">Thank You!</string>
+    <string name="thank_you">Thank You! Your information will be sent to you.</string>
 
 </resources>

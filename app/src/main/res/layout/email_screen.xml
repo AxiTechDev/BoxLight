@@ -289,30 +289,176 @@
         android:layout_alignTop="@+id/service"
         android:layout_toRightOf="@+id/quote" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="15dp"
-        android:inputType="text"
-        android:ems="10"
-        android:hint="Notes"
-        android:id="@+id/note"
-        android:layout_below="@+id/service"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/info"
-        android:layout_alignRight="@+id/pro_dev"
-        android:layout_alignEnd="@+id/pro_dev" />
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:inputType="text"-->
+        <!--android:ems="10"-->
+        <!--android:hint="Notes"-->
+        <!--android:id="@+id/note"-->
+        <!--android:layout_above="@+id/submit_button"-->
+        <!--android:layout_toRightOf="@+id/textView4"-->
+        <!--android:layout_toEndOf="@+id/info"-->
+        <!--android:layout_alignRight="@+id/pro_dev"-->
+        <!--android:layout_alignEnd="@+id/pro_dev" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:text="Add a note:"-->
+        <!--android:id="@+id/textView4"-->
+        <!--android:layout_marginLeft="@dimen/left_mar"-->
+        <!--android:layout_alignTop="@+id/note"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Add a note:"
-        android:id="@+id/textView4"
-        android:layout_marginLeft="@dimen/left_mar"
-        android:layout_alignTop="@+id/note"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignTop="@+id/scrollView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginLeft="@dimen/left_mar"
+        android:text="About: "
+        android:id="@+id/about"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:id="@+id/scrollView"
+        android:layout_above="@+id/name"
+        android:layout_marginBottom="50dp"
+        android:layout_alignRight="@+id/demo"
+        android:layout_alignLeft="@+id/info"
+        android:isScrollContainer="false"
+        android:background="#ececec" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class Audio"
+                android:id="@+id/class_audio"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/class_audio"
+                android:text="ClassFlow"
+                android:id="@+id/classflow"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classflow"
+                android:text="Digital Signs"
+                android:id="@+id/signs"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signs"
+                android:text="Letters alive"
+                android:id="@+id/letters_alive"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/letters_alive"
+                android:text="Projectors"
+                android:id="@+id/projectors"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/projectors"
+                android:text="SAFE"
+                android:id="@+id/safe"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/safe"
+                android:text="Tablets"
+                android:id="@+id/tablets"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tablets"
+                android:text="Touch Displays"
+                android:id="@+id/displays"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aerohive"
+                android:layout_alignLeft="@+id/audio_e"
+                android:id="@+id/aerohive"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/aerohive"
+                android:text="Audio Enhancement"
+                android:id="@+id/audio_e"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BenQ"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/audio_e"
+                android:id="@+id/ben_q"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Boxlight"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/ben_q"
+                android:id="@+id/boxlight"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CDI"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/boxlight"
+                android:id="@+id/cdi"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Extron"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/cdi"
+                android:id="@+id/extron"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HP"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/extron"
+                android:id="@+id/hp"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Impero"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/hp"
+                android:id="@+id/impero"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promethean"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/impero"
+                android:id="@+id/promethean"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Safari"
+                android:layout_alignLeft="@+id/audio_e"
+                android:layout_below="@+id/promethean"
+                android:id="@+id/safari"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

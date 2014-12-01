@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 
 import today.theworldover.boxlight.R;
 
@@ -28,10 +30,13 @@ public class EmailScreen extends Activity {
     DBAdapter myDb;
     EditText edtTextName;
     EditText edtTextEmail;
-    EditText edtTextNote;
+    //EditText edtTextNote;
+    String about = "";
     String grade;
     RatingBar mRate;
     CheckBox newsLetter, info, quote, demo, service, proDev;
+    CheckBox classAudio, classFlow, digitalSigns, lettersAlive, projectors, safe, tablets, touch;
+    CheckBox aero, audio, benQ, boxLight, cdi, extron, hP, impero, promethean, safari;
     //SeeRecords recSet;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +45,36 @@ public class EmailScreen extends Activity {
 
         edtTextName = (EditText) findViewById(R.id.name);
         edtTextEmail = (EditText) findViewById(R.id.email_address);
-        edtTextNote = (EditText) findViewById(R.id.note);
+        //edtTextNote = (EditText) findViewById(R.id.note);
+
         mRate = (RatingBar) findViewById(R.id.ratingBar);
+        //Checkboxes for requested services or info
         newsLetter = (CheckBox) findViewById(R.id.news_letter);
         info = (CheckBox) findViewById(R.id.info);
         quote = (CheckBox) findViewById(R.id.quote);
         demo = (CheckBox) findViewById(R.id.demo);
         service = (CheckBox) findViewById(R.id.service);
         proDev = (CheckBox) findViewById(R.id.pro_dev);
+        //Checkboxes for vendor specific info
+        classAudio = (CheckBox) findViewById(R.id.class_audio);
+        classFlow = (CheckBox) findViewById(R.id.classflow);
+        digitalSigns = (CheckBox) findViewById(R.id.signs);
+        lettersAlive = (CheckBox) findViewById(R.id.letters_alive);
+        projectors = (CheckBox) findViewById(R.id.projectors);
+        safe = (CheckBox) findViewById(R.id.safe);
+        tablets = (CheckBox) findViewById(R.id.tablets);
+        touch = (CheckBox) findViewById(R.id.displays);
+        aero = (CheckBox) findViewById(R.id.aerohive);
+        audio = (CheckBox) findViewById(R.id.audio_e);
+        benQ = (CheckBox) findViewById(R.id.ben_q);
+        boxLight = (CheckBox) findViewById(R.id.boxlight);
+        cdi = (CheckBox) findViewById(R.id.cdi);
+        extron = (CheckBox) findViewById(R.id.extron);
+        hP = (CheckBox) findViewById(R.id.hp);
+        impero = (CheckBox) findViewById(R.id.impero);
+        promethean = (CheckBox) findViewById(R.id.promethean);
+        safari = (CheckBox) findViewById(R.id.safari);
+
 
         //String name = edtTextName.getText().toString();
         //String email = edtTextEmail.getText().toString();
@@ -57,6 +84,11 @@ public class EmailScreen extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
+//                while (!validEmail(edtTextEmail.getEditableText().toString())) {
+//                    Toast.makeText(EmailScreen.this, "Please enter a valid Email address.", Toast.LENGTH_LONG).show();
+//                    edtTextEmail.setText("");
+//                    edtTextEmail.getText();
+//                }
                 //sendEmail();
                 AddRecord();
                 // after sending the email, clear the fields
@@ -74,7 +106,10 @@ public class EmailScreen extends Activity {
 
     }
 
-
+    private boolean validEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+    }
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
@@ -161,10 +196,30 @@ public class EmailScreen extends Activity {
         if (proDev.isChecked()) {
             wantProDev = 1;
         }
-        String note = edtTextNote.getEditableText().toString();
+
+        //Checkboxes for vendor specific info
+        if (classAudio.isChecked()) { about = about + " class audio,"; }
+        if (classFlow.isChecked()) { about = about + " classflow,"; }
+        if (digitalSigns.isChecked()) { about = about + " digital signs,"; }
+        if (lettersAlive.isChecked()) { about = about + " letters alive,"; }
+        if (projectors.isChecked()) { about = about + " projectors,"; }
+        if (safe.isChecked()) { about = about + " safe,"; }
+        if (tablets.isChecked()) { about = about + " tablets,"; }
+        if (touch.isChecked()) { about = about + " touch displays,"; }
+        if (aero.isChecked()) { about = about + " aerohive,"; }
+        if (audio.isChecked()) { about = about + " audio enhancement,"; }
+        if (benQ.isChecked()) { about = about + " benQ,"; }
+        if (boxLight.isChecked()) { about = about + " boxlight,"; }
+        if (cdi.isChecked()) { about = about + " cdi,"; }
+        if (extron.isChecked()) { about = about + " extron,"; }
+        if (hP.isChecked()) { about = about + " hp,"; }
+        if (impero.isChecked()) { about = about + " impero,"; }
+        if (promethean.isChecked()) { about = about + " promethean,"; }
+        if (safari.isChecked()) { about = about + " safari"; }
+        //String note = edtTextNote.getEditableText().toString();
         float rate = mRate.getRating();
 
-        long newId = myDb.insertRow(name, email, thisGrade, letter, wantInfo, wantQuote, wantDemo, wantService, wantProDev, note, rate);
+        long newId = myDb.insertRow(name, email, thisGrade, letter, wantInfo, wantQuote, wantDemo, wantService, wantProDev, about, rate);
 
         String thisEntry = "Record " + newId + " Name: " + name + " Email: " + email + " Grade: " + grade + " Interest rating: " + rate;
         Log.v("Hey billyyy! ", "" + thisEntry);
@@ -215,7 +270,7 @@ public class EmailScreen extends Activity {
                         +", get service call=" + service
                         +", get professional development=" + profDev
                         +", rating=" + rating
-                        +"\nnotes= " + note
+                        +"\nmore info= " + note
                         +"\n";
             } while(cursor.moveToNext());
             //Toast.makeText(EmailScreen.this, message, Toast.LENGTH_LONG).show();
