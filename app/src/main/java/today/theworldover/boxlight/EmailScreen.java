@@ -173,9 +173,6 @@ public class EmailScreen extends Activity {
 
 
     public void AddRecord() {
-        //displayText("Clicked add record!");
-        //EditText edtTextName = (EditText) findViewById(R.id.name);
-        //EditText edtTextEmail = (EditText) findViewById(R.id.email_address);
         String name = edtTextName.getEditableText().toString();
         String email = edtTextEmail.getEditableText().toString();
         String thisGrade = grade;
@@ -238,12 +235,6 @@ public class EmailScreen extends Activity {
     }
 
 
-    //this is a test
-   /* private void displayText(String message) {
-        TextView textView = (TextView) findViewById(R.id.textDisplay);
-        textView.setText(message);
-    }*/
-
     public void displayRecordSet(Cursor cursor) {
         String message = "";
         // populate the message from the cursor
@@ -280,15 +271,13 @@ public class EmailScreen extends Activity {
                         +"\nmore info= " + note
                         +"\n";
             } while(cursor.moveToNext());
-            //Toast.makeText(EmailScreen.this, message, Toast.LENGTH_LONG).show();
-            Log.v("test", message);
+
             writeToSD(message);
         }
 
         // Close the cursor to avoid a resource leak.
         cursor.close();
-
-        //displayText(message);
+;
     }
     //  ---can't figure out why this shit is giving me errors
 
@@ -332,27 +321,4 @@ public class EmailScreen extends Activity {
     }
 
 
-
-//    protected void sendEmail() {
-//        String[] recipient = {edtTextEmail.getText().toString() };
-//
-//        File fileLocation = new File (Environment.getExternalStorageDirectory(), "/mnt/external_sd/file.txt");
-//        Uri U = Uri.fromFile(fileLocation);
-//        Intent email = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
-//        email.setType("text/plain");
-//
-//        email.putExtra(Intent.EXTRA_EMAIL, recipient);
-//        email.putExtra(Intent.EXTRA_SUBJECT, "Its that thing you were looking for...");
-//        email.putExtra(Intent.EXTRA_TEXT, "Hey hey, I can't believe it worked!/n/n");
-//        email.putExtra(Intent.EXTRA_STREAM, U);
-//
-//
-//        try {
-//            startActivity(Intent.createChooser(email, "Choose an email client from..."));
-//        } catch (ActivityNotFoundException ex) {
-//            Toast.makeText(EmailScreen.this, "No email client found.", Toast.LENGTH_LONG).show();
-//        }
-//        Toast.makeText(EmailScreen.this, getString(R.string.thank_you), Toast.LENGTH_LONG).show();
-//        Log.i("Finished sending email...", "");
-//    }
 }
