@@ -1,6 +1,7 @@
 package today.theworldover.boxlight;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,6 +38,7 @@ public class EmailScreen extends Activity {
     CheckBox newsLetter, info, quote, demo, service, proDev;
     CheckBox classAudio, classFlow, digitalSigns, lettersAlive, projectors, safe, tablets, touch;
     CheckBox aero, audio, benQ, boxLight, cdi, extron, hP, impero, promethean, safari;
+    AlertDialog.Builder alert;
     //SeeRecords recSet;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,21 +76,19 @@ public class EmailScreen extends Activity {
         impero = (CheckBox) findViewById(R.id.impero);
         promethean = (CheckBox) findViewById(R.id.promethean);
         safari = (CheckBox) findViewById(R.id.safari);
-
+        alert = new AlertDialog.Builder(this);
 
         //String name = edtTextName.getText().toString();
         //String email = edtTextEmail.getText().toString();
         Button submit = (Button) findViewById(R.id.submit_button);
         openDB();
         checkExternalMedia();
+
         submit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-//                while (!validEmail(edtTextEmail.getEditableText().toString())) {
-//                    Toast.makeText(EmailScreen.this, "Please enter a valid Email address.", Toast.LENGTH_LONG).show();
-//                    edtTextEmail.setText("");
-//                    edtTextEmail.getText();
-//                }
+                if (validEmail(edtTextEmail.getEditableText().toString())) {
+
                 //sendEmail();
                 AddRecord();
                 // after sending the email, clear the fields
@@ -99,6 +99,13 @@ public class EmailScreen extends Activity {
                 Cursor cursor = myDb.getAllRows();
                 displayRecordSet(cursor);
                 finish();
+                } else {
+                    alert.setTitle("Invalid Email");
+                    alert.setMessage("Please enter a valid Email address.");
+                    Toast.makeText(EmailScreen.this, "Please enter a valid Email address.", Toast.LENGTH_LONG).show();
+                    edtTextEmail.setText("");
+                    edtTextEmail.getText();
+                }
             }
         });
 
@@ -323,6 +330,8 @@ public class EmailScreen extends Activity {
             e.printStackTrace();
         }
     }
+
+
 
 //    protected void sendEmail() {
 //        String[] recipient = {edtTextEmail.getText().toString() };
