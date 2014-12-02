@@ -21,7 +21,7 @@ import today.theworldover.boxlight.R;
 
 public class MainActivity extends FragmentActivity {
 
-
+    public final static int FIRST_FRAGMENT = 0;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -58,7 +58,11 @@ public class MainActivity extends FragmentActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        openFragment(FIRST_FRAGMENT);
+    }
 
+    public void openFragment(int firstFragment) {
+        this.mViewPager.setCurrentItem(firstFragment);
     }
 
     public void emailShare(View view) {

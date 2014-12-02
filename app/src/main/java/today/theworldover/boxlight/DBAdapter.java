@@ -63,7 +63,7 @@ public class DBAdapter {
     public static final String DATABASE_NAME = "BoxLight Tablet";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 8;
+    public static final int DATABASE_VERSION = 9;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
